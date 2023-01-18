@@ -1,0 +1,58 @@
+
+#Líder de equipo: Álvaro Puyo
+
+    #Estructura de datos
+
+
+    #Estructura de código
+        #Actividades
+            Splash
+
+            Pantalla principal
+                #Button jugar
+                #Button mostrar mejores puntuaciones
+
+            Pantalla de juego
+                #ImageView estado actual de la partido
+                #EditText para insertar datos(palabra o letra)
+                #TextView para cada una de las 6 letras
+                #TextView para mostrar las letras o palabras insertadas que no coinciden
+                #Button confirmar
+
+
+        #Logica de negocio
+            Acceso al archivo txt con las palabras
+            Manejo CSV
+            Controlodor del juego
+
+        #Modelo
+            Usuario
+                Nombre
+                Puntuación
+                Fecha
+
+
+    #Descripción del proyecto
+
+        El proyecto constará de dos actividades y un Splash. El splash aparecerá al iniciarse la
+        aplicación.
+
+        La primera actividad aparecerá después del Splash, aparecerán dos botones uno para jugar y
+        otro para mostrar el listado con las 10 mejores puntuaciones(nombre, fecha de la partida,
+        puntuación), que se mostrarán en un AlertDialog. Al pulsar el botón de iniciar partida
+        aparecerá AlertDialog en que se deberá de insertar el nombre del usuario que vaya a jugar
+        la partida, este diálogo tendrá dos botones Confirmar y Cancelar, al pulsar confirmar se
+        lanzará la actividad con el juego.
+
+        En la segunda actividad, al abrirse, será visible el patíbulo, un campo de texto para
+        insertar datos(palabras o letras), los TextView de las letras de la palabra y el boton de
+        confirmar. Se seleccionará una palabra aleatoria(que no será visible) de un txt y usuario
+        deberá de adivinarla, se podrá introducir una letra o una palabra de 6 letras, con
+        cualqjuier otra cantidad, no ocurrirá nada. Si la letra se encuentra en la palabra se
+        mostrará en el TextView de su posición, si se falla la letra o una palabra de 6 letras,
+        aparecerá una parte del ahorcado, si llega a dibujar el cuerpo entero el jugador habrá
+        perdido y se le preguntará si desea volver a jugar. Si el jugador acierta todas las letras
+        se le felicitará, se registraran sus datos de juego y se le preguntará si desea volver a
+        jugar con el mismo usuario o volver a la pantalla de inicio.
+
+
