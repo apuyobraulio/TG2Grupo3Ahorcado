@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 
+import java.util.ArrayList;
+
 import conn.example.tg2grupo3ahorcado.R;
 import conn.example.tg2grupo3ahorcado.controller.ControllerTXT;
 
@@ -31,6 +33,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         ControllerTXT.iniciarTxt(this);
-        String[]palabras = ControllerTXT.leerArchivoTxT(this);
+        ArrayList <String> palabras = ControllerTXT.leerArchivoTxT(this);
     }
 }

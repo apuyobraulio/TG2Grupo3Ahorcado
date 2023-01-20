@@ -14,14 +14,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import conn.example.tg2grupo3ahorcado.R;
 
 public class ControllerTXT {
-
-    private static  String[] palabras;
-
 
 
     public static void iniciarTxt(Context context){
@@ -46,7 +44,9 @@ public class ControllerTXT {
     }
 
 
-    public static String[] leerArchivoTxT(Context context){
+    public static ArrayList<String> leerArchivoTxT(Context context){
+
+        ArrayList <String> palabras= new ArrayList<>();
 
         try (FileInputStream fis = context.openFileInput("palabras.txt");
              InputStreamReader isr = new InputStreamReader(fis, StandardCharsets.UTF_8);
@@ -55,7 +55,7 @@ public class ControllerTXT {
                 while ((linea = br.readLine()) != null) {
                     int i = 0;
                     i++;
-                    palabras[i] = linea;
+                    palabras.add(linea);
                 }
 
         } catch (IOException ex) {
