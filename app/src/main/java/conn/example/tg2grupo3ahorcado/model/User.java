@@ -54,19 +54,20 @@ public class User implements Comparable<User>{
     @Override
     public int compareTo(@NonNull User compare) {
         if (this.mark > compare.getMark()){
-            return 1;
-        }
-        else if (this.mark < compare.getMark()){
             return -1;
         }
+        else if (this.mark < compare.getMark()){
+            return 1;
+        }
         else {
-            return this.date.compareTo(compare.getDate());
+            return compare.getDate().compareTo(this.date);
         }
     }
 
+    @SuppressLint({"DefaultLocale", "SimpleDateFormat"})
     public String mostrarDatos(){
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         String dateString = format.format(date);
-        return String.format("Nombre: %s  Puntuación: %d  Fecha:  %s",name, mark, dateString);
+        return String.format("Nombre: %s  Puntuación: %d  Fecha:  %s\n",name, mark, dateString);
     }
 }
