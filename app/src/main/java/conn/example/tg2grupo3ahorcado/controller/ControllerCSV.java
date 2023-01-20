@@ -47,7 +47,7 @@ public class ControllerCSV {
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
-        return users.stream().sorted().collect(Collectors.toList());
+        return users.stream().sorted().limit(10).collect(Collectors.toList());
     }
 
     public static boolean registrar(Context context, @NonNull User user){
