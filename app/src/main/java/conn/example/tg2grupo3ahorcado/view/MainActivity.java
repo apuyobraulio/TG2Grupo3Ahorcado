@@ -1,8 +1,10 @@
-package conn.example.tg2grupo3ahorcado;
+package conn.example.tg2grupo3ahorcado.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import conn.example.tg2grupo3ahorcado.R;
 
 public class MainActivity extends AppCompatActivity {
 
