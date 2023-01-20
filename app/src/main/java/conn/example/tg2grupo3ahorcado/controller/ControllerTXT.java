@@ -53,8 +53,6 @@ public class ControllerTXT {
             BufferedReader br = new BufferedReader(isr)){
                 String linea;
                 while ((linea = br.readLine()) != null) {
-                    int i = 0;
-                    i++;
                     palabras.add(linea);
                 }
 
