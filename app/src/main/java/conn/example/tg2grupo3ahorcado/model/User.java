@@ -1,14 +1,18 @@
 package conn.example.tg2grupo3ahorcado.model;
 
-public class User {
+import android.annotation.SuppressLint;
+
+import androidx.annotation.NonNull;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class User implements Comparable<User>{
     String name;
-    String mark;
-    String date;
+    Integer mark;
+    Date date;
 
-    public User() {
-    }
-
-    public User(String name, String mark, String date) {
+    public User(String name, Integer mark, Date date) {
         this.name = name;
         this.mark = mark;
         this.date = date;
@@ -22,24 +26,41 @@ public class User {
         this.name = name;
     }
 
-    public String getMark() {
+    public Integer getMark() {
         return mark;
     }
 
-    public void setMark(String mark) {
+    public void setMark(Integer mark) {
         this.mark = mark;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
+    @SuppressLint({"SimpleDateFormat", "DefaultLocale"})
+    @NonNull
     @Override
     public String toString() {
-        return String.format("%s;%s;%s",name, mark, date);
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        String dateString = format.format(date);
+        return String.format("%s;%d;%s",name, mark, dateString);
+    }
+
+    @Override
+    public int compareTo(@NonNull User compare) {
+        if (this.mark > compare.getMark()){
+            return 1;
+        }
+        else if (this.mark < compare.getMark()){
+            return -1;
+        }
+        else {
+            return this.date.compareTo(compare.getDate());
+        }
     }
 }
