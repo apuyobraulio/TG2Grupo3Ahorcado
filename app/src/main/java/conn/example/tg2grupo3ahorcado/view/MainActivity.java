@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.Looper;
 
 import conn.example.tg2grupo3ahorcado.R;
+import conn.example.tg2grupo3ahorcado.controller.ControllerTXT;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,5 +25,12 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }, 1500);
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        ControllerTXT.iniciarTxt(this);
+        String[]palabras = ControllerTXT.leerArchivoTxT(this);
     }
 }
