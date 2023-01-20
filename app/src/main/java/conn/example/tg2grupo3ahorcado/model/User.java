@@ -63,4 +63,10 @@ public class User implements Comparable<User>{
             return this.date.compareTo(compare.getDate());
         }
     }
+
+    public String mostrarDatos(){
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        String dateString = format.format(date);
+        return String.format("Nombre: %s  Puntuación: %d  Fecha:  %s",name, mark, dateString);
+    }
 }

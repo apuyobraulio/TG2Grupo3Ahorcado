@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import conn.example.tg2grupo3ahorcado.R;
+import conn.example.tg2grupo3ahorcado.controller.ControllerCSV;
+import conn.example.tg2grupo3ahorcado.model.User;
 
 public class PantallaPrincipalActivity extends AppCompatActivity {
 
@@ -23,12 +25,22 @@ public class PantallaPrincipalActivity extends AppCompatActivity {
         });
         Button btnRanking = findViewById(R.id.btnRanking);
         btnRanking.setOnClickListener(v->{
+
+
             new AlertDialog.Builder(this)
                     .setTitle("Lista de mejores partidas")
-                    .setMessage("texto")
+                    .setMessage(mostrarMejores())
                     .setNegativeButton("Cerrar", null)
                     .show();
         });
 
+    }
+    private String mostrarMejores(){
+        StringBuilder builder = new StringBuilder();
+        for (User u :ControllerCSV.bestMarks(this)) {
+            builder.append(u.mostrarDatos());
+
+        }
+        return builder.toString();
     }
 }
