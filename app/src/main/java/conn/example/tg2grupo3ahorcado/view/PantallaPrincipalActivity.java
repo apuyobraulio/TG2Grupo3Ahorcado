@@ -10,6 +10,7 @@ import android.widget.Button;
 import conn.example.tg2grupo3ahorcado.R;
 import conn.example.tg2grupo3ahorcado.controller.ControllerCSV;
 import conn.example.tg2grupo3ahorcado.model.User;
+import conn.example.tg2grupo3ahorcado.utilidades.Utiliy;
 
 public class PantallaPrincipalActivity extends AppCompatActivity {
 
@@ -20,8 +21,8 @@ public class PantallaPrincipalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pantalla_principal);
         Button btnIniciarPartida = findViewById(R.id.btnIniciarPartida);
         btnIniciarPartida.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), PantallaJuegoActivity.class);
-            startActivity(intent);
+            Utiliy.lanzarActividad(this,PantallaJuegoActivity.class);
+
         });
         Button btnRanking = findViewById(R.id.btnRanking);
         btnRanking.setOnClickListener(v->{
