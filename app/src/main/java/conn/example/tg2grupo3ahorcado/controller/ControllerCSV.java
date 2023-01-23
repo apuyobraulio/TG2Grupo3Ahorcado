@@ -13,14 +13,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import conn.example.tg2grupo3ahorcado.model.User;
+import conn.example.tg2grupo3ahorcado.utilidades.DateUtil;
 
 public class ControllerCSV {
 
@@ -29,7 +28,6 @@ public class ControllerCSV {
     @SuppressLint("SimpleDateFormat")
     @NonNull
     public static List<User> bestMarks(Context context) {
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         ArrayList<User> users = new ArrayList<>();
         try (FileInputStream fis = context.openFileInput(FILE);
              InputStreamReader inputStreamReader = new InputStreamReader(fis, StandardCharsets.UTF_8);
@@ -41,10 +39,10 @@ public class ControllerCSV {
                 users.add(new User(
                         data[0],
                         Integer.valueOf(data[1]),
-                        format.parse(data[2])
+                        DateUtil.fromString(data[2])
                 ));
             }
-        } catch (IOException | ParseException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return users.stream().sorted().limit(10).collect(Collectors.toList());

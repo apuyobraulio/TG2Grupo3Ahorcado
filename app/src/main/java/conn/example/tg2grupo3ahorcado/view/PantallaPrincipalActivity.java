@@ -1,6 +1,5 @@
 package conn.example.tg2grupo3ahorcado.view;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -10,7 +9,7 @@ import conn.example.tg2grupo3ahorcado.R;
 import conn.example.tg2grupo3ahorcado.controller.ControllerCSV;
 import conn.example.tg2grupo3ahorcado.model.User;
 import conn.example.tg2grupo3ahorcado.utilidades.UtilityAlertDialog;
-import conn.example.tg2grupo3ahorcado.utilidades.Utiliy;
+import conn.example.tg2grupo3ahorcado.utilidades.intentUtility;
 
 public class PantallaPrincipalActivity extends AppCompatActivity {
 
@@ -21,7 +20,7 @@ public class PantallaPrincipalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pantalla_principal);
         Button btnIniciarPartida = findViewById(R.id.btnIniciarPartida);
         btnIniciarPartida.setOnClickListener(v -> {
-            Utiliy.lanzarActividad(this,PantallaJuegoActivity.class);
+            intentUtility.lanzarActividad(this,PantallaJuegoActivity.class);
 
         });
         Button btnRanking = findViewById(R.id.btnRanking);
@@ -29,9 +28,9 @@ public class PantallaPrincipalActivity extends AppCompatActivity {
             String textoMostrar = mostrarMejores();
 
             if(mostrarMejores().isEmpty()){
-                UtilityAlertDialog.launcAlertDialog(this,"Ranking", "No se han encotrado partidas","Cerrar");
+                UtilityAlertDialog.launchAlertDialog(this,"Ranking", "No se han encotrado partidas","Cerrar");
             } else{
-                UtilityAlertDialog.launcAlertDialog(this, "Ranking", mostrarMejores(),"Cerrar");
+                UtilityAlertDialog.launchAlertDialog(this, "Ranking", mostrarMejores(),"Cerrar");
             }
 
         });

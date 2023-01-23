@@ -1,17 +1,20 @@
 package conn.example.tg2grupo3ahorcado.utilidades;
 
+import android.annotation.SuppressLint;
+
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Date;
 
 public class DateUtil {
-    private static SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+    @SuppressLint("SimpleDateFormat")
+    private static final SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
-    public static String fechaTexto(Date date){
+    public static String toDate(Date date){
         return format.format(date);
     }
 
-    public static Date fechaDate(String date){
+    public static Date fromString(String date){
         try{
         return format.parse(date);
 
@@ -21,7 +24,7 @@ public class DateUtil {
         return null;
     }
 
-    public static Date obtenerFecha(){
+    public static Date now(){
         return Date.from(Instant.now());
     }
 

@@ -4,8 +4,9 @@ import android.annotation.SuppressLint;
 
 import androidx.annotation.NonNull;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import conn.example.tg2grupo3ahorcado.utilidades.DateUtil;
 
 public class User implements Comparable<User>{
     String name;
@@ -46,8 +47,7 @@ public class User implements Comparable<User>{
     @NonNull
     @Override
     public String toString() {
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        String dateString = format.format(date);
+        String dateString = DateUtil.toDate(date);
         return String.format("%s;%d;%s",name, mark, dateString);
     }
 
@@ -66,8 +66,7 @@ public class User implements Comparable<User>{
 
     @SuppressLint({"DefaultLocale", "SimpleDateFormat"})
     public String mostrarDatos(){
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        String dateString = format.format(date);
+        String dateString = DateUtil.toDate(date);
         return String.format("Nombre: %s  Puntuación: %d  Fecha:  %s\n",name, mark, dateString);
     }
 }
