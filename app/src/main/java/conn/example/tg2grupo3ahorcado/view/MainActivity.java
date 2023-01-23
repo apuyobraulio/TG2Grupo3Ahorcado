@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import conn.example.tg2grupo3ahorcado.R;
 import conn.example.tg2grupo3ahorcado.controller.ControllerTXT;
+import conn.example.tg2grupo3ahorcado.model.ListaPalabras;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,5 +35,8 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         ControllerTXT.iniciarTxt(this);
         ArrayList <String> palabras = ControllerTXT.leerArchivoTxT(this);
+
+        ListaPalabras lista = new ListaPalabras(palabras);
+
     }
 }
