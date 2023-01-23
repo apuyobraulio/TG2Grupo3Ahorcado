@@ -6,9 +6,9 @@
 
     #Estructura de código
         #Actividades
-            Splash
+            Splash - Ismael
 
-            Pantalla principal
+            Pantalla principal - Álvaro
                 #Button jugar
                 #Button mostrar mejores puntuaciones
 
@@ -21,8 +21,8 @@
 
 
         #Logica de negocio
-            Acceso al archivo txt con las palabras
-            Manejo CSV
+            Acceso al archivo txt con las palabras - Víctor
+            Manejo CSV - Raúl
             Controlodor del juego
 
         #Modelo
