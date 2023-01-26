@@ -48,7 +48,7 @@
         insertar datos(palabras o letras), los TextView de las letras de la palabra y el boton de
         confirmar. Se seleccionará una palabra aleatoria(que no será visible) de un txt y usuario
         deberá de adivinarla, se podrá introducir una letra o una palabra de 6 letras, con
-        cualqjuier otra cantidad, no ocurrirá nada. Si la letra se encuentra en la palabra se
+        cualquier otra cantidad, no ocurrirá nada. Si la letra se encuentra en la palabra se
         mostrará en el TextView de su posición, si se falla la letra o una palabra de 6 letras,
         aparecerá una parte del ahorcado, si llega a dibujar el cuerpo entero el jugador habrá
         perdido y se le preguntará si desea volver a jugar. Si el jugador acierta todas las letras
