@@ -8,13 +8,10 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Observable;
-import java.util.Observer;
 
 import conn.example.tg2grupo3ahorcado.R;
 import conn.example.tg2grupo3ahorcado.controller.ControllerCSV;
@@ -27,7 +24,7 @@ import conn.example.tg2grupo3ahorcado.utilidades.UtilityAlertDialog;
 
 public class PantallaJuegoActivity extends AppCompatActivity{
 
-    private ArrayList<Character> letras = new ArrayList<>();
+    private final ArrayList<Character> letras = new ArrayList<>();
     String palabra;
     private Counter counter;
     private ControllerGame game;
@@ -38,15 +35,16 @@ public class PantallaJuegoActivity extends AppCompatActivity{
     TextView txtletra4;
     TextView txtletra5;
     TextView txtletra6;
+    TextView txtfallos;
+    ImageView img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         nombreJugador= UtilityAlertDialog.dialogoJugador(this);
         setContentView(R.layout.activity_pantalla_juego);
-
-        TextView txtfallos= findViewById(R.id.txtfallos);
-
+        txtfallos = findViewById(R.id.txtfallos);
+        img = findViewById(R.id.imgahorcado);
         txtletra1= findViewById(R.id.txtletra1);
         txtletra1.setPaintFlags(txtletra1.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         txtletra2= findViewById(R.id.txtletra2);
@@ -77,7 +75,7 @@ public class PantallaJuegoActivity extends AppCompatActivity{
             if(intent.length() == 1){
                 Character letra = intent.charAt(0);
                 ArrayList<Integer> posiciones = game.introducirLetra(letra);
-                if(posiciones.isEmpty());
+                if(posiciones.isEmpty()) txtfallos.append(intent);
                 addAciertos(posiciones, intent);
                 if(!letras.contains(letra)){
                     letras.add(letra);
@@ -93,12 +91,53 @@ public class PantallaJuegoActivity extends AppCompatActivity{
     private void comprobarVictoria() {
         boolean victoria = true;
         for (Character c : palabra.toCharArray()) {
-            if(!letras.contains(c)) victoria = false;
+            if (!letras.contains(c)) {
+                victoria = false;
+                break;
+            }
         }
         if (victoria) gameWinner();
     }
 
     private void comprobarVidas() {
+        switch (game.getVidas()){
+            case 0: {
+                img.setImageResource(R.drawable.cuerpoentero);
+                gameLoser();
+                break;
+            }
+            case 1: {
+                img.setImageResource(R.drawable.pieizquierdo);
+                break;
+            }
+            case 2: {
+                img.setImageResource(R.drawable.brazoizquierdo);
+                break;
+            }
+            case 3: {
+                img.setImageResource(R.drawable.brazoderecho);
+                break;
+            }
+            case 4: {
+                img.setImageResource(R.drawable.cuerpo);
+                break;
+            }
+            case 5: {
+                img.setImageResource(R.drawable.cabeza);
+                break;
+            }
+        }
+    }
+
+    private void gameLoser() {
+        counter.finalizar();
+        new AlertDialog.Builder(this)
+                .setTitle("Derrota")
+                .setMessage("No has sido capaz de acertar la palabra.\nLa palabra correcta era: " + palabra)
+                .setPositiveButton("Volver a jugar", (v, x) -> nuevoJuego())
+                .setNegativeButton("Cancelar", (v, x) -> finish())
+                .setOnCancelListener(v -> finish())
+                .show();
     }
 
     private void addAciertos(@NonNull ArrayList<Integer> posiciones, String letra) {
@@ -149,7 +188,7 @@ public class PantallaJuegoActivity extends AppCompatActivity{
                 .setMessage("Enhorabuena has acertado la palabra")
                 .setPositiveButton("Volver a jugar", (v, x) -> nuevoJuego())
                 .setNegativeButton("Cancelar", (v, x) -> finish())
-                .setOnDismissListener(v -> finish())
+                .setOnCancelListener(v -> finish())
                 .show();
     }
 
@@ -161,6 +200,8 @@ public class PantallaJuegoActivity extends AppCompatActivity{
         txtletra4.setText("");
         txtletra5.setText("");
         txtletra6.setText("");
+        txtfallos.setText("");
+        img.setImageResource(R.drawable.patibulo);
     }
 
     private void alertaCaracteres() {
@@ -174,10 +215,11 @@ public class PantallaJuegoActivity extends AppCompatActivity{
     @Override
     protected void onStart() {
         super.onStart();
+
         palabra = ListaPalabras.getRandom();
         game = new ControllerGame(palabra);
         TextView txtDato = findViewById(R.id.txtcontador);
-        counter = new Counter(count ->
+        if(counter == null || !counter.isRunning()) counter = new Counter(count ->
                 runOnUiThread(() -> txtDato.setText(String.valueOf(count))));
     }
 }

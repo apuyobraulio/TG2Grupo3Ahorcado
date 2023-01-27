@@ -13,6 +13,10 @@ public class Counter extends Thread{
         start();
     }
 
+    public boolean isRunning(){
+        return jugando;
+    }
+
     public Integer finalizar(){
         this.jugando = false;
         return count;
