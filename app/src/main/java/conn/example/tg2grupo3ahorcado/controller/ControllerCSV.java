@@ -49,16 +49,16 @@ public class ControllerCSV {
         return users.stream().sorted().limit(10).collect(Collectors.toList());
     }
 
-    public static boolean registrar(Context context, @NonNull User user){
+    public static void registrar(Context context, @NonNull User user){
         iniciarFichero(context);
-        return escribir(context, user.toString());
+        escribir(context, user.toString());
     }
 
     private static void iniciarFichero(@NonNull Context context){
         if(existe(context)) {
             return;
         }
-        escribir(context, "Name;Mark;Date");
+        escribir(context, "Name;Mark;Date;Time");
     }
 
     private static boolean existe(@NonNull Context context){
@@ -67,14 +67,12 @@ public class ControllerCSV {
                 .anyMatch(file -> file.equals(FILE));
     }
 
-    private static boolean escribir(Context context, String data) {
+    private static void escribir(Context context, String data) {
         try(FileOutputStream out = context.openFileOutput(FILE, Context.MODE_APPEND);
             PrintWriter writer = new PrintWriter(out)){
             writer.println(data);
-            return true;
         } catch (IOException e) {
             e.printStackTrace();
-            return false;
         }
     }
 }

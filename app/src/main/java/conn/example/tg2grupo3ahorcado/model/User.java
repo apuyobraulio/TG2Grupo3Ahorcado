@@ -58,7 +58,7 @@ public class User implements Comparable<User>{
     @Override
     public String toString() {
         String dateString = DateUtil.toDate(date);
-        return String.format("%s;%d;%s",name, mark, dateString);
+        return String.format("%s;%d;%s;%d",name, mark, dateString, seconds);
     }
 
     @Override
