@@ -4,22 +4,27 @@ import java.util.function.Consumer;
 
 public class Counter extends Thread{
 
-    int count = 0;
-    Consumer<Integer> consumer;
+    private int count = 0;
+    private final Consumer<Integer> consumer;
+    private boolean jugando = true;
 
     public Counter(Consumer<Integer> consumer){
         this.consumer = consumer;
         start();
     }
 
+    public Integer finalizar(){
+        this.jugando = false;
+        return count;
+    }
+
     @Override
     public void run() {
         super.run();
-        while (true){
+        while (jugando){
             try {
                 Thread.sleep(1000);
-                count++;
-                consumer.accept(count);
+                consumer.accept(++count);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
