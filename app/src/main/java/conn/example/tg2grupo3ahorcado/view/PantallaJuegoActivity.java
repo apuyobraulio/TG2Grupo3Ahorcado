@@ -2,6 +2,7 @@ package conn.example.tg2grupo3ahorcado.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,5 +27,34 @@ public class PantallaJuegoActivity extends AppCompatActivity {
         EditText txtpalabra= findViewById(R.id.txtpalabra);
         Button btncomprobar= findViewById(R.id.btncomprobar);
 
+        btncomprobar.setOnClickListener(v ->{
+
+        });
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Activity activity =this;
+        Runnable codigo = new Runnable() {
+            @Override
+            public void run() {
+
+                for(int i=0;i<10;i++){
+                    final int num =i;
+                    activity.runOnUiThread(()->{
+                        TextView txtDato = findViewById(R.id.txtcontador);
+                        txtDato.setText(String.valueOf(num));
+                    });
+                    try{
+                        Thread.sleep(1000);
+                    }catch (InterruptedException e){
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+        new Thread(codigo).start();
     }
 }
