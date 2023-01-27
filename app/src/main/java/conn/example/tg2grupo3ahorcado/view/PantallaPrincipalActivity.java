@@ -25,12 +25,11 @@ public class PantallaPrincipalActivity extends AppCompatActivity {
         });
         Button btnRanking = findViewById(R.id.btnRanking);
         btnRanking.setOnClickListener(v->{
-            String textoMostrar = mostrarMejores();
 
             if(mostrarMejores().isEmpty()){
-                UtilityAlertDialog.launchAlertDialog(this,"Ranking", "No se han encotrado partidas","Cerrar");
+                UtilityAlertDialog.launchAlertDialog(this,getString(R.string.ranking), getString(R.string.no_ranking),getString(R.string.cerrar));
             } else{
-                UtilityAlertDialog.launchAlertDialog(this, "Ranking", mostrarMejores(),"Cerrar");
+                UtilityAlertDialog.launchAlertDialog(this, getString(R.string.ranking), mostrarMejores(),getString(R.string.cerrar));
             }
 
         });
