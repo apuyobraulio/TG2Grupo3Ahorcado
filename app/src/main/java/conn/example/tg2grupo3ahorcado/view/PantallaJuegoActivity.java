@@ -142,7 +142,7 @@ public class PantallaJuegoActivity extends AppCompatActivity{
 
     private void gameWinner() {
         int timer = counter.finalizar();
-        User user = new User("", game.getVidas(), DateUtil.now(), timer);
+        User user = new User(nombreJugador, game.getVidas(), DateUtil.now(), timer);
         ControllerCSV.registrar(this, user);
         new AlertDialog.Builder(this)
                 .setTitle("Victoria")
