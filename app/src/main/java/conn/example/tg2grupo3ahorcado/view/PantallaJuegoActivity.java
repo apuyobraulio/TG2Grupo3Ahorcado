@@ -147,8 +147,19 @@ public class PantallaJuegoActivity extends AppCompatActivity{
         new AlertDialog.Builder(this)
                 .setTitle("Victoria")
                 .setMessage("Enhorabuena has acertado la palabra")
-                .setPositiveButton("Ok", null)
+                .setPositiveButton("Volver a jugar", (v, x) -> nuevoJuego())
+                .setNegativeButton("Cancelar", (v, x) -> finish())
                 .show();
+    }
+
+    private void nuevoJuego() {
+        onStart();
+        txtletra1.setText("");
+        txtletra2.setText("");
+        txtletra3.setText("");
+        txtletra4.setText("");
+        txtletra5.setText("");
+        txtletra6.setText("");
     }
 
     private void alertaCaracteres() {

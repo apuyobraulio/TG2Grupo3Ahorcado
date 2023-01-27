@@ -70,13 +70,13 @@ public class User implements Comparable<User>{
             return 1;
         }
         else {
-            return compare.getSeconds().compareTo(this.seconds);
+            return this.seconds.compareTo(compare.getSeconds());
         }
     }
 
     @SuppressLint({"DefaultLocale", "SimpleDateFormat"})
     public String mostrarDatos(){
         String dateString = DateUtil.toDate(date);
-        return String.format("Nombre: %s  Puntuación: %d  Fecha:  %s\n",name, mark, dateString);
+        return String.format("Nombre: %s  Puntuación: %d  Fecha:  %s Tiempo: %ds.\n",name, mark, dateString, seconds);
     }
 }
