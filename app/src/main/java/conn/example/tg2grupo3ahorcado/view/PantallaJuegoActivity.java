@@ -23,6 +23,7 @@ import conn.example.tg2grupo3ahorcado.controller.Counter;
 import conn.example.tg2grupo3ahorcado.model.ListaPalabras;
 import conn.example.tg2grupo3ahorcado.model.User;
 import conn.example.tg2grupo3ahorcado.utilidades.DateUtil;
+import conn.example.tg2grupo3ahorcado.utilidades.UtilityAlertDialog;
 
 public class PantallaJuegoActivity extends AppCompatActivity{
 
@@ -30,6 +31,7 @@ public class PantallaJuegoActivity extends AppCompatActivity{
     String palabra;
     private Counter counter;
     private ControllerGame game;
+    String nombreJugador;
     TextView txtletra1;
     TextView txtletra2;
     TextView txtletra3;
@@ -40,6 +42,7 @@ public class PantallaJuegoActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        nombreJugador= UtilityAlertDialog.dialogoJugador(this);
         setContentView(R.layout.activity_pantalla_juego);
 
         TextView txtfallos= findViewById(R.id.txtfallos);
