@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import conn.example.tg2grupo3ahorcado.R;
 import conn.example.tg2grupo3ahorcado.controller.ControllerTXT;
 import conn.example.tg2grupo3ahorcado.model.ListaPalabras;
-import conn.example.tg2grupo3ahorcado.utilidades.intentUtility;
+import conn.example.tg2grupo3ahorcado.utilidades.IntentUtility;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         Handler handler = new Handler(Looper.myLooper());
 
         handler.postDelayed(()-> {
-            intentUtility.lanzarActividad(this,PantallaPrincipalActivity.class);
+            IntentUtility.lanzarActividad(this,PantallaPrincipalActivity.class);
             finish();
         }, 1500);
 

@@ -9,7 +9,7 @@ import conn.example.tg2grupo3ahorcado.R;
 import conn.example.tg2grupo3ahorcado.controller.ControllerCSV;
 import conn.example.tg2grupo3ahorcado.model.User;
 import conn.example.tg2grupo3ahorcado.utilidades.UtilityAlertDialog;
-import conn.example.tg2grupo3ahorcado.utilidades.intentUtility;
+import conn.example.tg2grupo3ahorcado.utilidades.IntentUtility;
 
 public class PantallaPrincipalActivity extends AppCompatActivity {
 
@@ -20,7 +20,7 @@ public class PantallaPrincipalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pantalla_principal);
         Button btnIniciarPartida = findViewById(R.id.btnIniciarPartida);
         btnIniciarPartida.setOnClickListener(v -> {
-            intentUtility.lanzarActividad(this,PantallaJuegoActivity.class);
+            IntentUtility.lanzarActividad(this,PantallaJuegoActivity.class);
 
         });
         Button btnRanking = findViewById(R.id.btnRanking);
