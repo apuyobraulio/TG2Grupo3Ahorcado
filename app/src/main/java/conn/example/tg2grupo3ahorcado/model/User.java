@@ -12,11 +12,13 @@ public class User implements Comparable<User>{
     String name;
     Integer mark;
     Date date;
+    Integer seconds;
 
-    public User(String name, Integer mark, Date date) {
+    public User(String name, Integer mark, Date date, Integer seconds) {
         this.name = name;
         this.mark = mark;
         this.date = date;
+        this.seconds = seconds;
     }
 
     public String getName() {
@@ -43,6 +45,14 @@ public class User implements Comparable<User>{
         this.date = date;
     }
 
+    public Integer getSeconds() {
+        return seconds;
+    }
+
+    public void setSeconds(Integer seconds) {
+        this.seconds = seconds;
+    }
+
     @SuppressLint({"SimpleDateFormat", "DefaultLocale"})
     @NonNull
     @Override
@@ -60,7 +70,7 @@ public class User implements Comparable<User>{
             return 1;
         }
         else {
-            return compare.getDate().compareTo(this.date);
+            return compare.getSeconds().compareTo(this.seconds);
         }
     }
 

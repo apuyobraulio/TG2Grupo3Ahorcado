@@ -39,7 +39,8 @@ public class ControllerCSV {
                 users.add(new User(
                         data[0],
                         Integer.valueOf(data[1]),
-                        DateUtil.fromString(data[2])
+                        DateUtil.fromString(data[2]),
+                        Integer.valueOf(data[3])
                 ));
             }
         } catch (IOException e) {
