@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -20,7 +21,6 @@ import conn.example.tg2grupo3ahorcado.controller.Counter;
 import conn.example.tg2grupo3ahorcado.model.ListaPalabras;
 import conn.example.tg2grupo3ahorcado.model.User;
 import conn.example.tg2grupo3ahorcado.utilidades.DateUtil;
-import conn.example.tg2grupo3ahorcado.utilidades.UtilityAlertDialog;
 
 public class PantallaJuegoActivity extends AppCompatActivity{
 
@@ -41,7 +41,7 @@ public class PantallaJuegoActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        nombreJugador= UtilityAlertDialog.dialogoJugador(this);
+        pedirNombre();
         setContentView(R.layout.activity_pantalla_juego);
         txtfallos = findViewById(R.id.txtfallos);
         img = findViewById(R.id.imgahorcado);
@@ -86,6 +86,24 @@ public class PantallaJuegoActivity extends AppCompatActivity{
             txtpalabra.setText("");
         });
 
+    }
+
+    private void pedirNombre() {
+        LinearLayout layout = new LinearLayout(this);
+        layout.setOrientation(LinearLayout.VERTICAL);
+
+
+        final EditText input = new EditText(this);
+        input.setHint("Nombre");
+        layout.addView(input);
+
+
+        new AlertDialog.Builder(this).setView(layout)
+            .setPositiveButton("OK", (dialog, which) -> nombreJugador = input.getText().toString())
+            .setNegativeButton("Cancel", (v, x) -> finish())
+            .setTitle("Nombre del jugador")
+            .setMessage("Introduce tu nombre")
+            .show();
     }
 
     private void comprobarVictoria() {
