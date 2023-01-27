@@ -111,7 +111,6 @@ public class PantallaJuegoActivity extends AppCompatActivity{
         for (Character c : palabra.toCharArray()) {
             if (!letras.contains(c)) {
                 victoria = false;
-                break;
             }
         }
         if (victoria) gameWinner();
