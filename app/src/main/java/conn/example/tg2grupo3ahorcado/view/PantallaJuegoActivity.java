@@ -85,7 +85,7 @@ public class PantallaJuegoActivity extends AppCompatActivity{
                 comprobarVictoria();
             }
             comprobarVidas();
-
+            txtpalabra.setText("");
         });
 
     }
