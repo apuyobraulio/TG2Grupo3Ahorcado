@@ -149,6 +149,7 @@ public class PantallaJuegoActivity extends AppCompatActivity{
                 .setMessage("Enhorabuena has acertado la palabra")
                 .setPositiveButton("Volver a jugar", (v, x) -> nuevoJuego())
                 .setNegativeButton("Cancelar", (v, x) -> finish())
+                .setOnDismissListener(v -> finish())
                 .show();
     }
 
