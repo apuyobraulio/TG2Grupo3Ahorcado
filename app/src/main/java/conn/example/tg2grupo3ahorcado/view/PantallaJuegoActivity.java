@@ -101,6 +101,7 @@ public class PantallaJuegoActivity extends AppCompatActivity{
         new AlertDialog.Builder(this).setView(layout)
             .setPositiveButton("OK", (dialog, which) -> nombreJugador = input.getText().toString())
             .setNegativeButton("Cancel", (v, x) -> finish())
+                .setOnCancelListener(v -> finish())
             .setTitle("Nombre del jugador")
             .setMessage("Introduce tu nombre")
             .show();

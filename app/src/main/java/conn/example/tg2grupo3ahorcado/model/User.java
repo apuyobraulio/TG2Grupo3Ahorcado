@@ -77,6 +77,6 @@ public class User implements Comparable<User>{
     @SuppressLint({"DefaultLocale", "SimpleDateFormat"})
     public String mostrarDatos(){
         String dateString = DateUtil.toDate(date);
-        return String.format("Nombre: %s  Puntuación: %d  Fecha:  %s Tiempo: %ds.\n",name, mark, dateString, seconds);
+        return String.format("%s,  %d,  %s, %d s.\n",name, mark, dateString, seconds);
     }
 }
