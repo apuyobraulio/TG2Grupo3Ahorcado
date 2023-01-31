@@ -71,12 +71,17 @@ public class PantallaJuegoActivity extends AppCompatActivity{
                 if(game.introducirPalabra(intent)){
                     gameWinner();
                 }
-                else palabraFallada(intent);
+                else{
+                    palabraFallada(intent);
+                }
             }
             if(intent.length() == 1){
                 Character letra = intent.charAt(0);
                 ArrayList<Integer> posiciones = game.introducirLetra(letra);
-                if(posiciones.isEmpty()) txtfallos.append(intent);
+                if(posiciones.isEmpty()) {
+                    txtfallos.append(intent);
+                    SoundsUtil.reproducirMusica(this,R.raw.fallo);
+                }
                 addAciertos(posiciones, intent);
                 if(!letras.contains(letra)){
                     letras.add(letra);
