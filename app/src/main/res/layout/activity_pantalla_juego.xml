@@ -108,7 +108,7 @@
 
     <TextView
         android:id="@+id/txtfallos"
-        android:layout_width="23dp"
+        android:layout_width="40dp"
         android:layout_height="353dp"
         android:textColor="@color/white"
         android:textSize="34sp"

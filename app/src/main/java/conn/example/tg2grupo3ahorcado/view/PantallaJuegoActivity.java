@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import conn.example.tg2grupo3ahorcado.R;
 import conn.example.tg2grupo3ahorcado.controller.ControllerCSV;
@@ -76,10 +77,11 @@ public class PantallaJuegoActivity extends AppCompatActivity{
                 }
             }
             if(intent.length() == 1){
+                intent = intent.toUpperCase(Locale.ROOT);
                 Character letra = intent.charAt(0);
                 ArrayList<Integer> posiciones = game.introducirLetra(letra);
                 if(posiciones.isEmpty()) {
-                    txtfallos.append(intent);
+                    txtfallos.append(intent+"\n");
                     SoundsUtil.reproducirMusica(this,R.raw.fallo);
                 }
                 else {
