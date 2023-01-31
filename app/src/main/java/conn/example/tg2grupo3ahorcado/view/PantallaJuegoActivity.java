@@ -21,6 +21,7 @@ import conn.example.tg2grupo3ahorcado.controller.Counter;
 import conn.example.tg2grupo3ahorcado.model.ListaPalabras;
 import conn.example.tg2grupo3ahorcado.model.User;
 import conn.example.tg2grupo3ahorcado.utilidades.DateUtil;
+import conn.example.tg2grupo3ahorcado.utilidades.SoundsUtil;
 
 public class PantallaJuegoActivity extends AppCompatActivity{
 
@@ -187,6 +188,7 @@ public class PantallaJuegoActivity extends AppCompatActivity{
                 }
             }
         }
+        SoundsUtil.reproducirMusica(this,R.raw.acierto);
     }
 
     private void palabraFallada(String intent) {
@@ -195,6 +197,7 @@ public class PantallaJuegoActivity extends AppCompatActivity{
                 .setMessage(String.format("La palabra %s no es la correcta sigue probando", intent))
                 .setPositiveButton("Ok", null)
                 .show();
+        SoundsUtil.reproducirMusica(this,R.raw.fallo);
     }
 
     private void gameWinner() {
@@ -208,16 +211,17 @@ public class PantallaJuegoActivity extends AppCompatActivity{
                 .setNegativeButton("Cancelar", (v, x) -> finish())
                 .setOnCancelListener(v -> finish())
                 .show();
+        SoundsUtil.reproducirMusica(this,R.raw.victoria);
     }
 
     private void nuevoJuego() {
         onStart();
-        txtletra1.setText("");
-        txtletra2.setText("");
-        txtletra3.setText("");
-        txtletra4.setText("");
-        txtletra5.setText("");
-        txtletra6.setText("");
+        txtletra1.setText(" ");
+        txtletra2.setText(" ");
+        txtletra3.setText(" ");
+        txtletra4.setText(" ");
+        txtletra5.setText(" ");
+        txtletra6.setText(" ");
         txtfallos.setText("");
         img.setImageResource(R.drawable.patibulo);
     }

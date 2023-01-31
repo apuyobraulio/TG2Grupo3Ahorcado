@@ -13,6 +13,7 @@ import conn.example.tg2grupo3ahorcado.R;
 import conn.example.tg2grupo3ahorcado.controller.ControllerTXT;
 import conn.example.tg2grupo3ahorcado.model.ListaPalabras;
 import conn.example.tg2grupo3ahorcado.utilidades.IntentUtility;
+import conn.example.tg2grupo3ahorcado.utilidades.SoundsUtil;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,8 +22,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.graveyard);
-        mediaPlayer.start();
+        SoundsUtil.reproducirMusica(this,R.raw.graveyard);
+
+
         Handler handler = new Handler(Looper.myLooper());
 
         handler.postDelayed(()-> {

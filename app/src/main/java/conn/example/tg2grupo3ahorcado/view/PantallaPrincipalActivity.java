@@ -8,6 +8,7 @@ import android.widget.Button;
 import conn.example.tg2grupo3ahorcado.R;
 import conn.example.tg2grupo3ahorcado.controller.ControllerCSV;
 import conn.example.tg2grupo3ahorcado.model.User;
+import conn.example.tg2grupo3ahorcado.utilidades.SoundsUtil;
 import conn.example.tg2grupo3ahorcado.utilidades.UtilityAlertDialog;
 import conn.example.tg2grupo3ahorcado.utilidades.IntentUtility;
 
@@ -21,6 +22,7 @@ public class PantallaPrincipalActivity extends AppCompatActivity {
         Button btnIniciarPartida = findViewById(R.id.btnIniciarPartida);
         btnIniciarPartida.setOnClickListener(v -> {
             IntentUtility.lanzarActividad(this,PantallaJuegoActivity.class);
+            SoundsUtil.pararMusica();
 
         });
         Button btnRanking = findViewById(R.id.btnRanking);
