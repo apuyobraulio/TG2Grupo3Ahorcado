@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.song);
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.graveyard);
         mediaPlayer.start();
         Handler handler = new Handler(Looper.myLooper());
 
