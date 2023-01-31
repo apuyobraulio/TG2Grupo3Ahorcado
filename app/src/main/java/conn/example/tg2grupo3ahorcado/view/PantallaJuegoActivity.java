@@ -82,11 +82,13 @@ public class PantallaJuegoActivity extends AppCompatActivity{
                     txtfallos.append(intent);
                     SoundsUtil.reproducirMusica(this,R.raw.fallo);
                 }
-                addAciertos(posiciones, intent);
-                if(!letras.contains(letra)){
-                    letras.add(letra);
+                else {
+                    addAciertos(posiciones, intent);
+                    if (!letras.contains(letra)) {
+                        letras.add(letra);
+                    }
+                    comprobarVictoria();
                 }
-                comprobarVictoria();
             }
             comprobarVidas();
             txtpalabra.setText("");
