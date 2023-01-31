@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -247,7 +248,8 @@ public class PantallaJuegoActivity extends AppCompatActivity{
     protected void onStart() {
         super.onStart();
 
-        palabra = ListaPalabras.getRandom();
+        palabra = ListaPalabras.getRandom().toUpperCase(Locale.ROOT);
+        Log.i("Palabra correcta: ", palabra); //El juego es demasiado complicado, por si queremos acertar
         game = new ControllerGame(palabra);
         TextView txtDato = findViewById(R.id.txtcontador);
         if(counter == null || !counter.isRunning()) counter = new Counter(count ->
