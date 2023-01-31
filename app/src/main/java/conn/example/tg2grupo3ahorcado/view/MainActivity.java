@@ -2,6 +2,7 @@ package conn.example.tg2grupo3ahorcado.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -20,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.song);
+        mediaPlayer.start();
         Handler handler = new Handler(Looper.myLooper());
 
         handler.postDelayed(()-> {
